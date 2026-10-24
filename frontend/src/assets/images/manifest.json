@@ -1,0 +1,42 @@
+{
+  "hero-desktop-1920.avif": {
+    "width": 1920,
+    "height": 1080,
+    "bytes": 577
+  },
+  "hero-desktop-1920.webp": {
+    "width": 1920,
+    "height": 1080,
+    "bytes": 3792
+  },
+  "hero-desktop-960.avif": {
+    "width": 960,
+    "height": 540,
+    "bytes": 518
+  },
+  "hero-desktop-960.webp": {
+    "width": 960,
+    "height": 540,
+    "bytes": 1006
+  },
+  "hero-mobile-720.avif": {
+    "width": 720,
+    "height": 900,
+    "bytes": 533
+  },
+  "hero-mobile-720.webp": {
+    "width": 720,
+    "height": 900,
+    "bytes": 1244
+  },
+  "about-alt-1280.avif": {
+    "width": 1280,
+    "height": 853,
+    "bytes": 150349
+  },
+  "about-alt-1280.webp": {
+    "width": 1280,
+    "height": 853,
+    "bytes": 93828
+  }
+}
