@@ -42,10 +42,10 @@ From `frontend/`:
 Runtime used for these checks: Node 24.22.1. Tool versions selected for Node 20 compatibility; `.nvmrc` targets 20.19.0, but this environment did not run Node 20 itself.
 
 ## Bundle sizes
-- Main JS: 111,951 gzip bytes.
-- Public lazy chunk: 275 gzip bytes.
-- Admin lazy chunk: 185 gzip bytes.
-- Conservative combined JS total: 112,411 gzip bytes (109.78 KiB), below 150 KiB.
+- Main JS: 111,948 gzip bytes.
+- Public lazy chunk: 274 gzip bytes.
+- Admin lazy chunk: 184 gzip bytes.
+- Conservative combined JS total: 112,406 gzip bytes (109.77 KiB), below 150 KiB.
 - Styles: approximately 1.52 KB gzip.
 - Hero AVIF/WebP outputs: 25,750–143,807 bytes each; about outputs: 93,828 and 150,349 bytes.
 - Font files: 15,428 / 27,260 / 26,728 / 52,668 / 53,024 bytes.
