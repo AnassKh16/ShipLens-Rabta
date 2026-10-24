@@ -3,9 +3,9 @@ import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/re
 import { readdirSync, readFileSync } from 'node:fs';
 import { resolve } from 'node:path';
 import ts from 'typescript';
-import { App } from './app/App';
-import { LanguageSwitch } from './components/LanguageSwitch';
-import i18n from './i18n';
+import { App } from '../src/app/App';
+import { LanguageSwitch } from '../src/components/LanguageSwitch';
+import i18n from '../src/i18n';
 afterEach(async () => { cleanup(); await i18n.changeLanguage('en'); });
 it('switches to Urdu and persists only the language preference', async () => {
   render(<LanguageSwitch />);
@@ -38,4 +38,20 @@ describe('translation discipline', () => {
       expect(failures).toEqual([]);
     });
   }
+});
+
+it('provides loading, empty, error with retry, and content states', async () => {
+  const { ResourceState } = await import('../src/components/ResourceState');
+  let retried = false;
+  const props = {onRetry: () => {retried = true;}};
+  const {rerender} = render(<ResourceState {...props} state="loading" />);
+  expect(screen.getByRole('status')).toHaveTextContent('Loading');
+  rerender(<ResourceState {...props} state="empty" />);
+  expect(screen.getByRole('status')).toHaveTextContent('No records');
+  rerender(<ResourceState {...props} state="error" />);
+  expect(screen.getByRole('alert')).toBeVisible();
+  fireEvent.click(screen.getByRole('button',{name:'Try again'}));
+  expect(retried).toBe(true);
+  rerender(<ResourceState {...props} state="content"><p>Content fixture</p></ResourceState>);
+  expect(screen.getByText('Content fixture')).toBeVisible();
 });

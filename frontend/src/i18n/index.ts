@@ -5,6 +5,7 @@ import ur from './ur.json';
 export function applyLanguage(language: string) {
   const lang = language === 'ur' ? 'ur' : 'en';
   document.documentElement.lang = lang;
+  document.title = lang === 'ur' ? ur.brand : en.brand;
   document.documentElement.dir = lang === 'ur' ? 'rtl' : 'ltr';
   try { localStorage.setItem('rabta-language', lang); } catch { /* Storage may be disabled. */ }
 }
