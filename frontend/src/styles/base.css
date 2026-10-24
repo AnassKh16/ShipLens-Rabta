@@ -12,7 +12,7 @@ main, .app-header { max-inline-size: var(--content-max); margin-inline: auto; pa
 .app-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-16); border-block-end: var(--border) solid var(--hairline); }
 .skip-link { position: absolute; inset-inline-start: var(--space-16); transform: translateY(-200%); background: var(--paper); padding: var(--space-8); }
 .skip-link:focus { transform: none; }
-[lang="ur"] { font-family: var(--font-urdu); letter-spacing: 0; line-height: var(--leading-urdu); text-transform: none; }
+:root[lang="ur"] body, [lang="ur"] { font-family: var(--font-urdu); letter-spacing: 0; line-height: var(--leading-urdu); text-transform: none; }
 [lang="ur"] h1, [lang="ur"] h2, [lang="ur"] h3 { font-family: var(--font-urdu); letter-spacing: 0; line-height: var(--leading-urdu); font-size: .95em; }
 [lang="ur"] h1 { font-size: calc(var(--h1) * .9); } [lang="ur"] h2 { font-size: calc(var(--h2) * .9); } [lang="ur"] h3 { font-size: calc(var(--h3) * .9); }
 img { display: block; max-inline-size: 100%; block-size: auto; }
