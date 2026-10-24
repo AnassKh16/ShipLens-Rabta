@@ -18,7 +18,7 @@ export async function scan(root) {
   for (const entry of await readdir(root, { withFileTypes: true })) {
     const file = resolve(root, entry.name);
     if (entry.isDirectory()) results.push(...await scan(file));
-    else if (/\.(css|[jt]sx?)$/.test(file) && !/\/styles\/(tokens|fonts)\.css$/.test(file)) {
+    else if (/\.(css|[jt]sx?)$/.test(file) && !/\/styles\/(tokens|fonts)\.css$/.test(file.replaceAll('\\', '/'))) {
       results.push(...violations(await readFile(file, 'utf8')).map(message => `${file}: ${message}`));
     }
   }
