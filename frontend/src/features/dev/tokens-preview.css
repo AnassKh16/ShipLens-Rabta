@@ -1,0 +1,10 @@
+.token-page section { margin-block: var(--space-64); }
+.swatches, .spacing-list { list-style: none; padding: 0; }
+.swatches li { display: grid; grid-template-columns: var(--space-48) 1fr; gap: var(--space-8) var(--space-16); padding-block: var(--space-16); border-block-end: var(--border) solid var(--hairline); }
+.swatch { inline-size: var(--space-48); block-size: var(--space-48); border: var(--border) solid var(--muted); grid-row: span 3; }
+.type-row { border-block-start: var(--border) solid var(--hairline); padding-block: var(--space-24); }
+.type-row p { overflow-wrap: anywhere; margin-block: var(--space-16); }
+.type-row p[lang="en"] { font-family: var(--font-display); }
+.spacing-list li { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-16); margin-block: var(--space-16); }
+.spacing-bar { display: block; inline-size: var(--sample-space); block-size: var(--space-16); background: var(--primary); }
+@media (min-width: 768px) { .swatches li { grid-template-columns: var(--space-48) 1fr 1fr 1fr; align-items: center; } .swatch { grid-row: auto; } }
