@@ -16,7 +16,8 @@
     "resolveJsonModule": true,
     "types": [
       "vite/client",
-      "vitest/globals"
+      "vitest/globals",
+      "node"
     ]
   },
   "include": [

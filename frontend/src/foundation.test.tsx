@@ -1,0 +1,41 @@
+import { afterEach, describe, expect, it } from 'vitest';
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { readdirSync, readFileSync } from 'node:fs';
+import { resolve } from 'node:path';
+import ts from 'typescript';
+import { App } from './app/App';
+import { LanguageSwitch } from './components/LanguageSwitch';
+import i18n from './i18n';
+afterEach(async () => { cleanup(); await i18n.changeLanguage('en'); });
+it('switches to Urdu and persists only the language preference', async () => {
+  render(<LanguageSwitch />);
+  fireEvent.click(screen.getByRole('button', { name: 'اردو' }));
+  await waitFor(() => expect(document.documentElement.dir).toBe('rtl'));
+  expect(document.documentElement.lang).toBe('ur');
+  expect(localStorage.getItem('rabta-language')).toBe('ur');
+  fireEvent.click(screen.getByRole('button', { name: 'EN' }));
+  await waitFor(() => expect(document.documentElement.dir).toBe('ltr'));
+});
+it('renders the lazy public foundation', async () => {
+  render(<App />);
+  expect(await screen.findByRole('heading', { name: 'The RABTA foundation' })).toBeInTheDocument();
+});
+function components(root: string): string[] {
+  return readdirSync(root,{withFileTypes:true}).flatMap(e => e.isDirectory() ? components(resolve(root,e.name)) : e.name.endsWith('.tsx') ? [resolve(root,e.name)] : []);
+}
+describe('translation discipline', () => {
+  for (const file of [...components(resolve('src/components')), ...components(resolve('src/features'))]) {
+    it(`${file} has no literal user-facing JSX text or attributes`, () => {
+      const source = ts.createSourceFile(file,readFileSync(file,'utf8'),ts.ScriptTarget.Latest,true,ts.ScriptKind.TSX);
+      const failures: string[] = [];
+      function visit(node: ts.Node) {
+        if (ts.isJsxText(node) && /[\p{L}\p{N}]/u.test(node.text)) failures.push(node.text);
+        if (ts.isJsxAttribute(node) && ['title','placeholder','alt','aria-label'].includes(node.name.getText(source)) && node.initializer && ts.isStringLiteral(node.initializer) && /[\p{L}]/u.test(node.initializer.text)) failures.push(node.initializer.text);
+        if (ts.isJsxExpression(node) && node.expression && ts.isStringLiteral(node.expression) && /[\p{L}]/u.test(node.expression.text)) failures.push(node.expression.text);
+        ts.forEachChild(node,visit);
+      }
+      visit(source);
+      expect(failures).toEqual([]);
+    });
+  }
+});

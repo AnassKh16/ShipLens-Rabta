@@ -25,7 +25,7 @@ for (const [name, original, width, height, overlay] of jobs) {
   const top = Math.max(0, Math.min(meta.height - cropHeight, Math.round(meta.height * .55 - cropHeight / 2)));
   let graded = input.extract({ left, top, width: cropWidth, height: cropHeight }).resize(width, height).modulate({ saturation: .6 });
   if (overlay) {
-    const tint = await sharp({ create: { width, height, channels: 4, background: primary } }).ensureAlpha(.18).png().toBuffer();
+    const tint = await sharp({ create: { width, height, channels: 4, background: primary } }).removeAlpha().ensureAlpha(.18).png().toBuffer();
     graded = graded.composite([{ input: tint, blend: 'over' }]);
   }
   const raw = await graded.png().toBuffer();

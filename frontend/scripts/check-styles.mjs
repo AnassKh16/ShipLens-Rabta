@@ -5,7 +5,7 @@ export function violations(source) {
   const clean = source.replace(/\/\*[\s\S]*?\*\//g, '');
   const rules = [
     ['hex color', /#[\da-f]{3,8}\b/gi],
-    ['raw font-family', /font-family\s*:\s*(?!var\()[^;}]+/gi],
+    ['raw font-family', /font-family\s*:(?!\s*var\()[^;}]+/gi],
     ['physical CSS property', /(?:^|[;{\s])(?:margin-(?:left|right)|padding-(?:left|right)|(?:left|right)|border-(?:left|right)(?:-[\w-]+)?)\s*:/gim],
     ['physical CSS value', /(?:text-align|float)\s*:\s*(?:left|right)\b/gi],
     ['physical inline style', /\b(?:marginLeft|marginRight|paddingLeft|paddingRight|borderLeft|borderRight|left|right)\s*:/g],
