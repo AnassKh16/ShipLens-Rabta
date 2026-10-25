@@ -27,3 +27,5 @@ img { display: block; max-inline-size: 100%; block-size: auto; }
 .language-switch button[lang="en"] { font-family: var(--font-body); letter-spacing: normal; word-spacing: normal; }
 
 .ltr-identifier { unicode-bidi: isolate; font-family: var(--font-body); }
+
+.language-switch .language-separator { color: var(--muted); font-family: var(--font-body); }
