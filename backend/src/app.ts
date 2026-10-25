@@ -27,7 +27,7 @@ export function createApp(
           defaultSrc: ["'self'"],
           scriptSrc: ["'self'"],
           styleSrc: ["'self'"],
-          styleSrcAttr: ["'unsafe-inline'"],
+          styleSrcAttr: ["'none'"],
           fontSrc: ["'self'"],
           imgSrc: ["'self'", 'data:'],
           connectSrc: ["'self'"],

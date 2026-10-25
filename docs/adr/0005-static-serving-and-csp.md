@@ -11,9 +11,9 @@ Fingerprint-named files under assets/ cache immutably for one year.
 HTML and unversioned files use no-cache so clients revalidate deployments.
 Helmet CSP defaults to self; scripts, stylesheets, fonts and connections are self-only.
 Images additionally allow data:; framing and objects are forbidden.
-style-src-attr permits unsafe-inline only for attributes: TokenPage uses React
-style props for swatch backgrounds, type sizes and spacing custom properties.
-Neither inline scripts nor inline style elements are permitted.
+style-src-attr is none: the production build removes TokenPage, the only source
+using inline style props for swatches and type samples. No inline exception is needed.
+Inline scripts, style elements and style attributes are not permitted.
 HSTS is emitted only in production; local HTTP development does not set it.
 Production uses compiled JavaScript to migrate before starting the listener.
 Migration failure prevents startup; the existing advisory lock serializes migrations.

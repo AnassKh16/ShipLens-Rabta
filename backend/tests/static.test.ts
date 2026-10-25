@@ -88,6 +88,8 @@ describe('static frontend and routing', () => {
     async (production) => {
       const res = await request(app(production)).get('/');
       const csp = res.headers['content-security-policy'];
+      expect(csp).toBeDefined();
+      if (!csp) throw new Error('CSP header missing');
       for (const directive of [
         "default-src 'self'",
         "script-src 'self'",
@@ -96,7 +98,7 @@ describe('static frontend and routing', () => {
         "img-src 'self' data:",
         "connect-src 'self'",
         "frame-ancestors 'none'",
-        "style-src-attr 'unsafe-inline'",
+        "style-src-attr 'none'",
       ])
         expect(csp.split(';')).toContain(directive);
       if (production)
