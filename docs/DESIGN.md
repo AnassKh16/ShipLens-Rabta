@@ -11,8 +11,8 @@ Spacing (px): 4, 8, 12, 16, 24, 32, 48, 64, 96, 128. Radii: 4, 8, 9999 (pill: bu
 ## 3. Typography
 Clash Display 700 (headlines, big numbers), Satoshi 500/700 (everything else), Noto Naskh Arabic 400/700 (Urdu). Self-hosted woff2, font-display: swap, preload the hero weight only.
 Scale (clamp, as tokens): display 56-180px (public hero only, about 11vw), h1 40-64, h2 28-40, h3 20-24, body 16-17 (never below 16 on public), UI/table 14-15 (never below 14), label 12-13 uppercase +0.08em (max two per screen, public only; admin labels are sentence case).
-Headlines: tracking -0.04em, leading 0.95-1.0, Latin only. Numbers in tables/KPIs: font-variant-numeric tabular-nums.
-Urdu ([lang="ur"]): Noto Naskh Arabic, letter-spacing 0, line-height 1.7, no uppercase, no negative tracking, no echo effect, headlines slightly smaller than English. Test every screen in Urdu before reporting done.
+Headlines: tracking -0.03em, word-spacing 0.14em (tokens --tracking-headline and --heading-word-spacing), leading 0.95-1.0, Latin only. Numbers in tables/KPIs: font-variant-numeric tabular-nums.
+Urdu ([lang="ur"]): Noto Naskh Arabic, letter-spacing 0, word-spacing normal, line-height 1.7, no uppercase, no negative tracking, no echo effect, headlines slightly smaller than English. Test every screen in Urdu before reporting done.
 
 ## 4. Layout
 12-column grid, 24px gutters desktop, 16px mobile, max content 1280px; admin fluid to 1440px. Breakpoints 360 (minimum), 768, 1024, 1280. Compose asymmetrically, not everything centered or equal. Vary rhythm: a full-bleed moment, a text-led moment, a table or list moment. Use ONLY logical CSS properties (margin-inline, padding-inline, inset-inline, text-align start/end, border-inline).

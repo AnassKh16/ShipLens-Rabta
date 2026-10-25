@@ -48,7 +48,8 @@
   --font-body: 'Satoshi', system-ui, sans-serif;
   --font-urdu: 'Noto Naskh Arabic', serif;
   --font-serif: Georgia, serif;
-  --tracking-headline: -.04em;
+  --tracking-headline: -.03em;
+  --heading-word-spacing: .14em;
   --tracking-label: .08em;
   --leading-headline: 1;
   --leading-body: 1.6;
