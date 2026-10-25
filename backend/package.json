@@ -14,7 +14,9 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "migrate": "node --import tsx src/db/migrate.ts",
-    "seed": "node --import tsx src/db/seed.ts"
+    "seed": "node --import tsx src/db/seed.ts",
+    "migrate:prod": "node dist/db/migrate.js",
+    "start:prod": "npm run migrate:prod && node dist/server.js"
   },
   "dependencies": {
     "cors": "^2.8.6",
