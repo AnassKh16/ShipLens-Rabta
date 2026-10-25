@@ -1,3 +1,25 @@
+# Visual fixes: latest verification
+
+Exactly three commits extend the original foundation; no dependencies added and no push performed.
+
+Done: heading tracking is -0.03em with word spacing 0.14em, including display/h1/h2 samples; Urdu keeps normal word spacing. Language toggle is plain text with muted inactive text, ink active text, a 2px primary underline, 44px minimum targets, accessible English/اردو names and aria-current. Urdu font family is explicit on html, body, headings and form controls; EN uses Satoshi in either document language. Font source/token consistency tests added.
+
+Verification: lint, TypeScript noEmit, 15 Vitest tests and production build passed. All five WOFF2 URLs in compiled CSS resolve to emitted font files. jsdom cannot prove rendering. No actual browser spacing tuning, screenshots, font scaling, keyboard walkthrough or Lighthouse run is claimed.
+
+Manual DevTools check:
+1. Open `/dev/tokens` on the dev server; inspect display, h1 and h2 samples. In Elements > Computed, confirm English letter-spacing equals -0.03em times the computed font size and word-spacing equals 0.14em times it. Confirm visible spaces in “Design tokens” and “The RABTA foundation”.
+2. Switch to Urdu. In Elements select a heading, the اردو button and a form control when a form exists. Computed should show Noto Naskh Arabic, letter-spacing 0 and word-spacing normal. Expand Rendered Fonts and confirm the Urdu glyphs use Noto Naskh Arabic, rather than a system fallback.
+3. Inspect EN while Urdu is active: Computed and Rendered Fonts should show Satoshi. Inspect the active toggle for aria-current=true, a 2px primary underline and transparent background. Check both toggles' hit areas and tab/focus behavior.
+4. For production, run the preview server and inspect Network > Font after switching language; both Noto weights should load successfully when used. The dev inspector is intentionally absent from production.
+
+Section 12: 1 PASS (style lint); 2 FAIL/unverified (bilingual responsive screenshots); 3 FAIL/unverified (1.3x scaling); 4 FAIL/unverified (browser keyboard walkthrough); 5 N/A (no new request states; existing state tests pass); 6 N/A (no role actions); 7 PASS/source review (no new ban-list violations); 8 FAIL/unverified (Lighthouse); 9 PASS (existing contrast checks cover unchanged colors); 10 PASS (translation tests, English accessible-name key in both resources; Urdu still needs native review).
+
+Known issues: visual confirmation remains outstanding because no usable browser is installed in this environment. Font paths and CSS declarations prove availability and intent, not rendered glyph selection. No L2 changes needed for these fixes. Next step: perform the DevTools checks above at 360/768/1280px in both languages.
+
+---
+
+The following is the original foundation handoff record; its bundle sizes and test count describe that earlier version.
+
 # Frontend foundation handoff
 
 Branch: `feat/fe-foundation`.

@@ -1,6 +1,6 @@
 * { box-sizing: border-box; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: var(--body); line-height: var(--leading-body); }
-button, input, select, textarea { font: inherit; }
+button, input, select, textarea { font: inherit; letter-spacing: inherit; }
 button, a { min-block-size: var(--target-min); }
 a { color: var(--primary); text-underline-offset: var(--space-4); }
 button { color: var(--paper); background: var(--primary); border: var(--border) solid var(--primary); padding-block: var(--space-8); padding-inline: var(--space-16); cursor: pointer; }
@@ -12,7 +12,7 @@ main, .app-header { max-inline-size: var(--content-max); margin-inline: auto; pa
 .app-header { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-16); border-block-end: var(--border) solid var(--hairline); }
 .skip-link { position: absolute; inset-inline-start: var(--space-16); transform: translateY(-200%); background: var(--paper); padding: var(--space-8); }
 .skip-link:focus { transform: none; }
-:root[lang="ur"] body, [lang="ur"] { font-family: var(--font-urdu); letter-spacing: 0; word-spacing: normal; line-height: var(--leading-urdu); text-transform: none; }
+html[lang="ur"], html[lang="ur"] body, [lang="ur"], [lang="ur"] :is(button, input, select, textarea) { font-family: var(--font-urdu); letter-spacing: 0; word-spacing: normal; line-height: var(--leading-urdu); text-transform: none; }
 [lang="ur"] h1, [lang="ur"] h2, [lang="ur"] h3 { font-family: var(--font-urdu); letter-spacing: 0; word-spacing: normal; line-height: var(--leading-urdu); font-size: .95em; }
 [lang="ur"] h1 { font-size: calc(var(--h1) * .9); } [lang="ur"] h2 { font-size: calc(var(--h2) * .9); } [lang="ur"] h3 { font-size: calc(var(--h3) * .9); }
 img { display: block; max-inline-size: 100%; block-size: auto; }
@@ -23,3 +23,5 @@ img { display: block; max-inline-size: 100%; block-size: auto; }
 .language-switch button { min-inline-size: var(--target-min); min-block-size: var(--target-min); background: transparent; border: var(--border) solid transparent; color: var(--muted); padding-inline: var(--space-8); text-decoration: none; }
 .language-switch button:hover { background: transparent; color: var(--ink); }
 .language-switch button[aria-current="true"] { color: var(--ink); text-decoration-line: underline; text-decoration-color: var(--primary); text-decoration-thickness: var(--focus-width); text-underline-offset: var(--space-8); }
+
+.language-switch button[lang="en"] { font-family: var(--font-body); letter-spacing: normal; word-spacing: normal; }
