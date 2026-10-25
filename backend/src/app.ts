@@ -1,5 +1,6 @@
 import express from 'express';
 import helmet from 'helmet';
+import { frontendMiddleware } from './middleware/static.js';
 import { pinoHttp } from 'pino-http';
 import { randomUUID } from 'node:crypto';
 import type { Logger } from 'pino';
@@ -11,10 +12,33 @@ import { errorHandler, notFound } from './middleware/errors.js';
 export function createApp(
   database: DatabaseProbe,
   logger: Logger = createLogger(),
+  options: { frontendDist?: string; production?: boolean } = {},
 ) {
   const app = express();
   app.disable('x-powered-by');
-  app.use(helmet());
+  app.use(
+    helmet({
+      strictTransportSecurity: options.production
+        ? { maxAge: 31536000, includeSubDomains: true }
+        : false,
+      contentSecurityPolicy: {
+        useDefaults: false,
+        directives: {
+          defaultSrc: ["'self'"],
+          scriptSrc: ["'self'"],
+          styleSrc: ["'self'"],
+          styleSrcAttr: ["'none'"],
+          fontSrc: ["'self'"],
+          imgSrc: ["'self'", 'data:'],
+          connectSrc: ["'self'"],
+          frameAncestors: ["'none'"],
+          objectSrc: ["'none'"],
+          baseUri: ["'self'"],
+          formAction: ["'self'"],
+        },
+      },
+    }),
+  );
   // Generate IDs server-side; never trust arbitrary caller-supplied log identifiers.
   app.use(
     pinoHttp({
@@ -38,6 +62,7 @@ export function createApp(
   // CORS middleware is deliberately not enabled: the frontend is same-origin.
   app.use(express.json({ limit: '1mb' }));
   app.use(healthRoutes(database));
+  if (options.frontendDist) app.use(frontendMiddleware(options.frontendDist));
   app.use(notFound);
   app.use(errorHandler);
   return app;
