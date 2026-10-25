@@ -1,11 +1,9 @@
 import type { ErrorRequestHandler, RequestHandler } from 'express';
 
 export const notFound: RequestHandler = (_req, res) => {
-  res
-    .status(404)
-    .json({
-      error: { code: 'NOT_FOUND', message: 'Route not found', details: null },
-    });
+  res.status(404).json({
+    error: { code: 'NOT_FOUND', message: 'Route not found', details: null },
+  });
 };
 
 export const errorHandler: ErrorRequestHandler = (
