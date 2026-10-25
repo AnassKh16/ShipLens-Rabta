@@ -8,6 +8,7 @@ const PublicRoutes = lazy(() => import('../features/public/PublicRoutes'));
 const AdminRoutes = lazy(() => import('../features/admin/AdminRoutes'));
 // Vite removes this import and its entire chunk from production builds.
 const TokenPage = import.meta.env.DEV ? lazy(() => import('../features/dev/TokenPage')) : null;
+const ComponentsPage = import.meta.env.DEV ? lazy(() => import('../features/dev/ComponentsPage')) : null;
 const queryClient = new QueryClient();
 class PageBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
   state = { failed: false };
@@ -23,6 +24,7 @@ export function App() {
     <header className="app-header"><Link to="/">{t('brand')}</Link><LanguageSwitch /></header>
     <PageBoundary><Suspense fallback={<main id="main" aria-busy="true"><p role="status">{t('common.loading')}</p></main>}>
       <Routes><Route path="/admin/*" element={<AdminRoutes />} />
+        {ComponentsPage && <Route path="/dev/components" element={<ComponentsPage />} />}
         {TokenPage && <Route path="/dev/tokens" element={<TokenPage />} />}
         <Route path="/*" element={<PublicRoutes />} />
       </Routes>
