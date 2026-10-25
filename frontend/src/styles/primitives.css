@@ -20,3 +20,23 @@ input:not([type="checkbox"]), select, textarea { inline-size: 100%; min-block-si
 .field-control input { min-inline-size: 0; }
 .checkbox { display: flex; align-items: center; min-block-size: var(--target-min); gap: var(--space-12); cursor: pointer; }
 .checkbox input { inline-size: var(--space-24); block-size: var(--space-24); accent-color: var(--primary); margin: 0; }
+.status-label { display: inline-flex; align-items: center; gap: var(--space-8); color: var(--ink); }
+.status-label--pending span { text-decoration: underline dashed; text-underline-offset: var(--space-4); }
+.section-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: var(--space-24); border-block-end: var(--border) solid var(--hairline); padding-block-end: var(--space-16); }
+.section-header h2 { margin-block-start: 0; }
+.section-header p { max-inline-size: var(--dialog-max); }
+.plain-state { padding-block: var(--space-24); }
+.skeleton { min-block-size: var(--space-48); inline-size: 100%; background: var(--echo-4); border-radius: var(--radius-4); animation: none; }
+.toast { padding-block: var(--space-12); border-block-start: var(--border) solid var(--hairline); min-block-size: var(--target-min); }
+.wordmark { display: inline-flex; flex-wrap: wrap; gap: var(--space-12); align-items: baseline; }
+.wordmark-latin { font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--h2); letter-spacing: var(--tracking-headline); word-spacing: var(--heading-word-spacing); }
+.wordmark-urdu { font-family: var(--font-urdu); white-space: nowrap; line-height: var(--leading-urdu); }
+.echo-text { display: inline-grid; position: relative; font-family: var(--font-display); font-weight: var(--weight-bold); word-spacing: var(--heading-word-spacing); }
+.echo-original, .echo-layer { grid-area: 1 / 1; }
+.echo-original { z-index: 1; }
+.echo-layer { position: relative; pointer-events: none; user-select: none; }
+.echo-layer--1 { inset-block-start: var(--echo-offset-1); color: var(--echo-1); }
+.echo-layer--2 { inset-block-start: var(--echo-offset-2); color: var(--echo-2); }
+.echo-layer--3 { inset-block-start: var(--echo-offset-3); color: var(--echo-3); }
+.echo-layer--4 { inset-block-start: var(--echo-offset-4); color: var(--echo-4); }
+[lang="ur"] .echo-text { font-family: var(--font-urdu); word-spacing: normal; letter-spacing: 0; }
