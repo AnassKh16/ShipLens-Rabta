@@ -46,7 +46,7 @@
   --label: clamp(.75rem, 1vw, .8125rem);
   --font-display: 'Clash Display', sans-serif;
   --font-body: 'Satoshi', system-ui, sans-serif;
-  --font-urdu: 'Noto Naskh Arabic', serif;
+  --font-urdu: 'Noto Naskh Arabic', var(--font-body), sans-serif;
   --font-serif: Georgia, serif;
   --tracking-headline: -.03em;
   --heading-word-spacing: .14em;
