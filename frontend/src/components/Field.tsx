@@ -21,9 +21,9 @@ export function Field({ label, helper, error, validate, id: givenId, type = 'tex
   return <FieldFrame id={id} label={label} helper={helper} error={message} required={props.required}>
     <div className="field-control"><input {...props} id={id} type={type === 'password' && visible ? 'text' : type}
       aria-invalid={message ? true : props['aria-invalid']} aria-describedby={describedBy(id, helper, message, props['aria-describedby'])}
-      onBlur={event => { setLocalError(validate?.(event.currentTarget.value)); onBlur?.(event); }}
+      onBlur={event => { const input = event.currentTarget; setLocalError(validate?.(input.value) ?? (!input.validity.valid ? t(input.validity.valueMissing ? 'errors.required' : 'errors.invalid') : undefined)); onBlur?.(event); }}
       onChange={event => { if (localError) setLocalError(validate?.(event.currentTarget.value)); onChange?.(event); }}
-      onInvalid={event => { if (!event.currentTarget.validity.valid) setLocalError(t('errors.required')); onInvalid?.(event); }} />
+      onInvalid={event => { if (!event.currentTarget.validity.valid) setLocalError(t(event.currentTarget.validity.valueMissing ? 'errors.required' : 'errors.invalid')); onInvalid?.(event); }} />
       {type === 'password' && <Button variant="text" aria-controls={id} aria-pressed={visible} onClick={() => setVisible(!visible)}>
         {visible ? <EyeOff aria-hidden="true" /> : <Eye aria-hidden="true" />}{t(visible ? 'primitives.hidePassword' : 'primitives.showPassword')}
       </Button>}
