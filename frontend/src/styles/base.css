@@ -18,3 +18,8 @@ main, .app-header { max-inline-size: var(--content-max); margin-inline: auto; pa
 img { display: block; max-inline-size: 100%; block-size: auto; }
 @media (min-width: 768px) { main, .app-header { padding-inline: var(--space-24); } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; } }
+
+.language-switch { display: flex; align-items: center; gap: var(--space-4); }
+.language-switch button { min-inline-size: var(--target-min); min-block-size: var(--target-min); background: transparent; border: var(--border) solid transparent; color: var(--muted); padding-inline: var(--space-8); text-decoration: none; }
+.language-switch button:hover { background: transparent; color: var(--ink); }
+.language-switch button[aria-current="true"] { color: var(--ink); text-decoration-line: underline; text-decoration-color: var(--primary); text-decoration-thickness: var(--focus-width); text-underline-offset: var(--space-8); }

@@ -9,12 +9,22 @@ import i18n from '../src/i18n';
 afterEach(async () => { cleanup(); await i18n.changeLanguage('en'); });
 it('switches to Urdu and persists only the language preference', async () => {
   render(<LanguageSwitch />);
-  fireEvent.click(screen.getByRole('button', { name: 'اردو' }));
+  const english = screen.getByRole('button', { name: 'English' });
+  const urdu = screen.getByRole('button', { name: 'اردو' });
+  expect(english).toHaveAttribute('aria-current', 'true');
+  expect(urdu).not.toHaveAttribute('aria-current');
+  expect(urdu).toHaveAttribute('lang', 'ur');
+  expect(screen.getByText('|')).toHaveAttribute('aria-hidden', 'true');
+  fireEvent.click(urdu);
+  expect(urdu).toHaveAttribute('aria-current', 'true');
+  expect(english).not.toHaveAttribute('aria-current');
   await waitFor(() => expect(document.documentElement.dir).toBe('rtl'));
   expect(document.documentElement.lang).toBe('ur');
   expect(localStorage.getItem('rabta-language')).toBe('ur');
-  fireEvent.click(screen.getByRole('button', { name: 'EN' }));
+  fireEvent.click(screen.getByRole('button', { name: 'English' }));
   await waitFor(() => expect(document.documentElement.dir).toBe('ltr'));
+  expect(english).toHaveAttribute('aria-current', 'true');
+  expect(urdu).not.toHaveAttribute('aria-current');
 });
 it('renders the lazy public foundation', async () => {
   render(<App />);

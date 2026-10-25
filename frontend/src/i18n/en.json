@@ -13,7 +13,8 @@
   "language": {
     "en": "EN",
     "ur": "اردو",
-    "label": "Choose language"
+    "label": "Choose language",
+    "english": "English"
   },
   "common": {
     "retry": "Try again",

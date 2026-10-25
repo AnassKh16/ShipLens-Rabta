@@ -13,7 +13,8 @@
   "language": {
     "en": "EN",
     "ur": "اردو",
-    "label": "زبان منتخب کریں"
+    "label": "زبان منتخب کریں",
+    "english": "English"
   },
   "common": {
     "retry": "دوبارہ کوشش کریں",
