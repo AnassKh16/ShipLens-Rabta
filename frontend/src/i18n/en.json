@@ -1,0 +1,59 @@
+{
+  "brand": "RABTA",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "programs": "Programs",
+    "branches": "Branches",
+    "events": "Events",
+    "involved": "Get involved",
+    "contact": "Contact"
+  },
+  "volunteer": "Volunteer",
+  "language": {
+    "en": "EN",
+    "ur": "اردو",
+    "label": "Choose language",
+    "english": "English"
+  },
+  "common": {
+    "retry": "Try again",
+    "cancel": "Cancel",
+    "save": "Save changes",
+    "loading": "Loading RABTA…",
+    "skip": "Skip to content",
+    "empty": "No records are available yet.",
+    "error": "This page could not load. Try again.",
+    "notFound": "This page is not available."
+  },
+  "errors": {
+    "required": "Complete this required field.",
+    "rateLimit": "Too many attempts. Please try again later.",
+    "duplicate": "An application with these details already exists."
+  },
+  "foundation": {
+    "title": "The RABTA foundation",
+    "body": "Branch teams and head office share one operational record. Public pages and administration will be built on this bilingual foundation.",
+    "adminTitle": "Administration foundation",
+    "adminBody": "Sign-in and role permissions are awaiting the backend contract. Operational records are not available here.",
+    "devLink": "Inspect design tokens"
+  },
+  "tokens": {
+    "title": "Design tokens",
+    "intro": "Inspect the shared palette, typography and spacing in both languages. Ratios describe contrast against paper and the dark ground.",
+    "colors": "Color palette",
+    "type": "Type scale",
+    "spacing": "Spacing scale",
+    "paper": "Paper contrast",
+    "dark": "Dark ground contrast",
+    "sampleEn": "A clear record for every branch",
+    "sampleUr": "ہر شاخ کا واضح ریکارڈ",
+    "typeSample": "Type sample",
+    "ratio": "{{value}}:1",
+    "space": "{{value}} px",
+    "alpha": "Composited on each background"
+  },
+  "image": {
+    "heroAlt": "Sun low on the horizon above an open landscape"
+  }
+}
