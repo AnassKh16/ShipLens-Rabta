@@ -1,11 +1,11 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { gzipSync } from 'node:zlib';
 const files = await readdir('dist/assets');
-if (files.some(file => /TokenPage|tokens-preview/i.test(file))) throw new Error('Development route chunk leaked into production.');
+if (files.some(file => /TokenPage|tokens-preview|ComponentsPage|components-preview/i.test(file))) throw new Error('Development route chunk leaked into production.');
 let total = 0;
 for (const file of files.filter(file => file.endsWith('.js'))) {
   const source = await readFile(`dist/assets/${file}`);
-  if (source.includes('swatches') || source.includes('--sample-space')) throw new Error('Token inspector implementation leaked into production.');
+  if (source.includes('swatches') || source.includes('--sample-space') || source.includes('component-showcase') || source.includes('focus-destination')) throw new Error('Token inspector implementation leaked into production.');
   const bytes = gzipSync(source).length;
   console.log(`${file}: ${bytes} gzip bytes`);
   total += bytes;

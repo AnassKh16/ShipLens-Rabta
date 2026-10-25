@@ -1,0 +1,63 @@
+.button { display: inline-flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: var(--space-8); min-block-size: var(--target-min); border-radius: var(--radius-4); font-weight: var(--weight-bold); }
+.button svg, .field-error svg, .status-label svg { inline-size: var(--space-16); block-size: var(--space-16); flex-shrink: 0; }
+.button--primary, .button--pill { background: var(--primary); color: var(--paper); border-color: var(--primary); }
+.button--primary:hover, .button--pill:hover { background: var(--paper); color: var(--primary); }
+.button--pill { border-radius: var(--radius-9999); }
+.button--secondary { background: transparent; color: var(--primary); border-color: var(--primary); }
+.button--secondary:hover { background: var(--primary); color: var(--paper); }
+.button--text { background: transparent; color: var(--primary); border-color: transparent; }
+.button--text:hover { background: transparent; color: var(--ink); text-decoration: underline; }
+.button:disabled, .button:disabled:hover { background: var(--paper); color: var(--muted); border-color: var(--muted); cursor: not-allowed; }
+.button[aria-busy="true"] { border-style: dashed; }
+.field { display: grid; gap: var(--space-8); margin-block: var(--space-16); }
+.field label { font-weight: var(--weight-bold); }
+.field-helper, .field-error { margin: 0; }
+.field-helper { color: var(--muted); }
+.field-error { color: var(--danger); display: flex; align-items: baseline; gap: var(--space-8); }
+input:not([type="checkbox"]), select, textarea { inline-size: 100%; min-block-size: var(--target-min); padding-block: var(--space-8); padding-inline: var(--space-12); border: var(--border) solid var(--muted); border-radius: var(--radius-4); background: var(--white); color: var(--ink); }
+.field [aria-invalid="true"], .checkbox input[aria-invalid="true"] { border-color: var(--danger); }
+.field-control { display: flex; align-items: start; gap: var(--space-8); }
+.field-control input { min-inline-size: 0; }
+.checkbox { display: flex; align-items: center; min-block-size: var(--target-min); gap: var(--space-12); cursor: pointer; }
+.checkbox input { inline-size: var(--space-24); block-size: var(--space-24); accent-color: var(--primary); margin: 0; }
+.status-label { display: inline-flex; align-items: center; gap: var(--space-8); color: var(--ink); }
+.status-label--pending span { text-decoration: underline dashed; text-underline-offset: var(--space-4); }
+.section-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: start; gap: var(--space-24); border-block-end: var(--border) solid var(--hairline); padding-block-end: var(--space-16); }
+.section-header h2 { margin-block-start: 0; }
+.section-header p { max-inline-size: var(--dialog-max); }
+.plain-state { padding-block: var(--space-24); }
+.skeleton { min-block-size: var(--space-48); inline-size: 100%; background: var(--echo-4); border-radius: var(--radius-4); animation: none; }
+.toast { padding-block: var(--space-12); border-block-start: var(--border) solid var(--hairline); min-block-size: var(--target-min); }
+.wordmark { display: inline-flex; flex-wrap: wrap; gap: var(--space-12); align-items: baseline; }
+.wordmark-latin { font-family: var(--font-display); font-weight: var(--weight-bold); font-size: var(--h2); letter-spacing: var(--tracking-headline); word-spacing: var(--heading-word-spacing); }
+.wordmark-urdu { font-family: var(--font-urdu); white-space: nowrap; line-height: var(--leading-urdu); }
+.echo-text { display: inline-grid; position: relative; font-family: var(--font-display); font-weight: var(--weight-bold); word-spacing: var(--heading-word-spacing); }
+.echo-original, .echo-layer { grid-area: 1 / 1; }
+.echo-original { z-index: 1; }
+.echo-layer { position: relative; pointer-events: none; user-select: none; }
+.echo-layer--1 { inset-block-start: var(--echo-offset-1); color: var(--echo-1); }
+.echo-layer--2 { inset-block-start: var(--echo-offset-2); color: var(--echo-2); }
+.echo-layer--3 { inset-block-start: var(--echo-offset-3); color: var(--echo-3); }
+.echo-layer--4 { inset-block-start: var(--echo-offset-4); color: var(--echo-4); }
+[lang="ur"] .echo-text { font-family: var(--font-urdu); word-spacing: normal; letter-spacing: 0; }
+.dialog-backdrop { position: fixed; inset-block: 0; inset-inline: 0; background: var(--dialog-overlay); z-index: var(--layer-dialog); display: grid; align-items: center; justify-items: center; padding: var(--space-16); overflow: auto; }
+.dialog { background: var(--paper); color: var(--ink); padding: var(--space-24); inline-size: min(100%, var(--dialog-max)); max-block-size: 100%; overflow: auto; border: var(--border) solid var(--muted); border-radius: var(--radius-8); }
+.dialog-actions { display: flex; flex-wrap: wrap; justify-content: end; gap: var(--space-16); }
+.table-scroll { overflow: auto; max-inline-size: 100%; max-block-size: var(--table-max-height); }
+.data-table { inline-size: 100%; border-collapse: collapse; font-size: var(--ui); text-align: start; }
+.data-table caption { text-align: start; font-weight: var(--weight-bold); padding-block: var(--space-16); }
+.data-table th, .data-table td { padding-block: var(--space-12); padding-inline: var(--space-16); border-block-end: var(--border) solid var(--hairline); min-block-size: var(--space-48); }
+.data-table th { position: sticky; inset-block-start: 0; background: var(--paper); text-align: start; }
+.numeric { text-align: end; font-variant-numeric: tabular-nums; }
+.data-table th.numeric { text-align: end; }
+.cell-label { display: none; }
+.table-pagination { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-12); border-block-end: var(--border) solid var(--hairline); }
+@media (max-width: 767px) {
+  .data-table, .data-table tbody, .data-table tr { display: block; }
+  .data-table thead { display: block; position: sticky; inset-block-start: 0; background: var(--paper); z-index: 1; }
+  .data-table thead tr { display: flex; flex-wrap: wrap; }
+  .data-table th { position: static; border: 0; }
+  .data-table tbody tr { border-block-end: var(--border) solid var(--hairline); padding-block: var(--space-12); }
+  .data-table td { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,2fr); gap: var(--space-16); border: 0; overflow-wrap: anywhere; }
+  .cell-label { display: block; color: var(--muted); text-align: start; }
+}

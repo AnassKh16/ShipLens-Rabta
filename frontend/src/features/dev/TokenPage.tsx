@@ -1,6 +1,7 @@
 import { useEffect, useState, type CSSProperties } from 'react';
 import { useTranslation } from 'react-i18next';
 import './tokens-preview.css';
+import { Ltr } from '../../components/Ltr';
 const colors = ['paper','white','ink','ground-dark','footer','muted','hairline','hairline-on-dark','echo-1','echo-2','echo-3','echo-4','primary','primary-hover','accent-mint','chart-2','chart-3','danger','danger-tint'];
 const scales = ['display','h1','h2','h3','body','ui','label'];
 const spaces = [4,8,12,16,24,32,48,64,96,128];
@@ -30,11 +31,11 @@ export default function TokenPage() {
   return <main id="main" className="token-page"><h1>{t('tokens.title')}</h1><p>{t('tokens.intro')}</p>
     <section><h2>{t('tokens.colors')}</h2><p>{t('tokens.alpha')}</p><ul className="swatches">{colors.map(name => <li key={name}>
       <span className="swatch" style={{ background: `var(--${name})` }} aria-hidden="true" />
-      <code>{`--${name}`}</code><span>{t('tokens.paper')}{': '}{t('tokens.ratio',{ value: ratios[name]?.[0] ?? '…' })}</span><span>{t('tokens.dark')}{': '}{t('tokens.ratio',{value:ratios[name]?.[1] ?? '…'})}</span>
+      <Ltr><code>{`--${name}`}</code></Ltr><span>{t('tokens.paper')}{': '}<Ltr>{t('tokens.ratio',{ value: ratios[name]?.[0] ?? '…' })}</Ltr></span><span>{t('tokens.dark')}{': '}<Ltr>{t('tokens.ratio',{value:ratios[name]?.[1] ?? '…'})}</Ltr></span>
     </li>)}</ul></section>
     <section><h2>{t('tokens.type')}</h2>{scales.map(scale => <div className="type-row" key={scale}>
-      <code>{`--${scale}`}</code><p lang="en" style={{fontSize:`var(--${scale})`}}>{t('tokens.sampleEn')}</p><p lang="ur" dir="rtl" style={{fontSize:`var(--${scale})`}}>{t('tokens.sampleUr')}</p>
+      <Ltr><code>{`--${scale}`}</code></Ltr><p lang="en" style={{fontSize:`var(--${scale})`}}>{t('tokens.sampleEn')}</p><p lang="ur" dir="rtl" style={{fontSize:`var(--${scale})`}}>{t('tokens.sampleUr')}</p>
     </div>)}</section>
-    <section><h2>{t('tokens.spacing')}</h2><ul className="spacing-list">{spaces.map(value => <li key={value}><code>{`--space-${value}`}</code><span className="spacing-bar" style={{'--sample-space':`var(--space-${value})`} as CSSProperties} aria-hidden="true" /><span>{t('tokens.space',{value})}</span></li>)}</ul></section>
+    <section><h2>{t('tokens.spacing')}</h2><ul className="spacing-list">{spaces.map(value => <li key={value}><Ltr><code>{`--space-${value}`}</code></Ltr><span className="spacing-bar" style={{'--sample-space':`var(--space-${value})`} as CSSProperties} aria-hidden="true" /><span>{t('tokens.space',{value})}</span></li>)}</ul></section>
   </main>;
 }
