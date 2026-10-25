@@ -68,6 +68,7 @@
   --echo-offset-3: -.12em;
   --echo-offset-4: -.16em;
   --dialog-max: 560px;
+  --table-max-height: 70vh;
   --dialog-overlay: rgba(11,11,11,.7);
   --layer-dialog: 100;
 }

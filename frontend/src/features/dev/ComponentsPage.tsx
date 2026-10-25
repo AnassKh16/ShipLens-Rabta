@@ -44,10 +44,10 @@ export default function ComponentsPage() {
     <section><SectionHeader title={t('showcase.feedback')} />
       <h3>{t('showcase.loadingTitle')}</h3><Skeleton /><h3>{t('showcase.emptyTitle')}</h3><EmptyState message={t('showcase.empty')} action={<Button variant="text">{t('showcase.clear')}</Button>} />
       <h3>{t('showcase.errorTitle')}</h3>{retried ? <p role="status">{t('showcase.caption')}</p> : <ErrorState message={t('showcase.error')} onRetry={() => setRetried(true)} />}
-      <h3>{t('showcase.contentTitle')}</h3><Button variant="secondary" onClick={() => setMessage(t('showcase.toast'))}>{t('showcase.showToast')}</Button><Toast message={message} />
+      <h3>{t('showcase.contentTitle')}</h3><Button variant="secondary" onClick={() => setMessage('showcase.toast')}>{t('showcase.showToast')}</Button><Toast message={message ? t(message) : ''} />
     </section>
     <section><SectionHeader title={t('showcase.brand')} /><Wordmark /><p className="demo-echo"><EchoText text={t('showcase.echo')} /></p></section>
     <section><SectionHeader title={t('showcase.keyboard')} description={t('showcase.focusNote')} /><div className="demo-fields"><label htmlFor="focus-destination">{t('showcase.focusTarget')}</label><input ref={focusTarget} id="focus-destination" /><div className="demo-actions"><Button variant="secondary" onClick={() => focusTarget.current?.focus()}>{t('showcase.focusAction')}</Button><Button onClick={() => setDialog(true)}>{t('showcase.dialogOpen')}</Button></div></div></section>
-    <Dialog open={dialog} title={t('showcase.dialogTitle')} consequence={t('showcase.consequence')} confirmLabel={t('showcase.confirm')} onClose={() => setDialog(false)} onConfirm={() => {setDialog(false);setMessage(t('showcase.dialogDone'));}} />
+    <Dialog open={dialog} title={t('showcase.dialogTitle')} consequence={t('showcase.consequence')} confirmLabel={t('showcase.confirm')} onClose={() => setDialog(false)} onConfirm={() => {setDialog(false);setMessage('showcase.dialogDone');}} />
   </main>;
 }
