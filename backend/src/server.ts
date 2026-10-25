@@ -9,7 +9,10 @@ const logger = createLogger();
 const config = loadConfig();
 const pool = createPool(config.DATABASE_URL);
 pool.on('error', () => logger.error('Idle database connection failed'));
-const app = createApp(healthRepository(pool), logger);
+const app = createApp(healthRepository(pool), logger, {
+  frontendDist: config.FRONTEND_DIST,
+  production: config.NODE_ENV === 'production',
+});
 const server = app.listen(config.PORT, () =>
   logger.info({ port: config.PORT }, 'Server listening'),
 );

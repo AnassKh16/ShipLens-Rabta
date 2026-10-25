@@ -15,8 +15,8 @@ dotenv.config({
 });
 const databaseUrl = process.env.TEST_DATABASE_URL;
 if (!databaseUrl)
-  console.warn(
-    'PostgreSQL integration tests SKIPPED: TEST_DATABASE_URL is not set.',
+  throw new Error(
+    'TEST_DATABASE_URL is required: run tests against PostgreSQL 16.',
   );
 
 // Each run owns a random schema. No public tables or development data are reset.
@@ -27,7 +27,7 @@ let pool: pg.Pool;
 let branchId: string;
 let userId: string;
 
-describe.skipIf(!databaseUrl)('real PostgreSQL integration', () => {
+describe('real PostgreSQL integration', () => {
   beforeAll(async () => {
     admin = new pg.Pool({
       connectionString: databaseUrl,

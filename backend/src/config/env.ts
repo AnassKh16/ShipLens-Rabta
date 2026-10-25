@@ -11,6 +11,10 @@ const postgresUrl = z
   );
 const schema = z.object({
   DATABASE_URL: postgresUrl,
+  FRONTEND_DIST: z
+    .string()
+    .min(1)
+    .default(fileURLToPath(new URL('../../../frontend/dist', import.meta.url))),
   PORT: z.coerce.number().int().min(1).max(65535).default(3000),
   NODE_ENV: z
     .enum(['development', 'test', 'production'])
